@@ -1,0 +1,83 @@
+---
+- name: ConfigBABA
+  # specified devices located in hosts file
+  hosts: switch
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: LOOPBACK1
+      ios_command: 
+        commands:
+          - configure terminal
+          - int lo 1
+          - ip add 1.1.1.1 255.255.255.255
+          - no shut
+      vars:
+        ansible_network_os: ios
+
+
+--hosts
+
+#COREBABA
+[switch]
+10.31.1.4
+
+[switch:vars]
+ansible_user=artur
+ansible_password=C1sc0123
+ansible_connection=network_cli
+ansible_port=22
+ansible_network_os=ios
+ansible_ssh_common_args="-oKexAlgorithms=+diffie-hellman-group1-sha1 -c aes256-cbc"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
+Ansible
+
+Run RockyLinux
+	-> Get IP: ip addr
+		-> SSHv2 on SecureCRT
+	
+	Modify hosts file
+	
+	[router]
+		->IPs
+		
+		
+		ansible router -m ping  *automatically ping all devices under [router]
+		
+		
+		if WARNING: REMOTE HOST IDENTIFICATION CHANGED!
+		
+		ssh-keygen -f "/root/.ssh/known_hosts" -R 10.31.1.4
+	
+	
+VSCODE
+---
+- name: LOOPBACK_CREATION
+  hosts: router	-> calling specified from hosts
+  gather_facts: no
+  become: yes
+
+
+SEMAPHORE
+rivan
+C1sc0123
+
+
+ansible awx
