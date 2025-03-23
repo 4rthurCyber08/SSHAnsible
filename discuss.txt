@@ -1,3 +1,5 @@
+Reference: https://docs.ansible.com/ansible/latest/network/getting_started/basic_concepts.html
+
 Ansible Components
 
 Control Node - The machine from which you run the Ansible CLI tools.
