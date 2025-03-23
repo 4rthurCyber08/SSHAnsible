@@ -1,0 +1,11 @@
+REMOVE SSH 
+
+ssh-keygen -f "/root/.ssh/known_hosts" -R "10._.1.4"
+ssh-keygen -f "/root/.ssh/known_hosts" -R "10._.100.8"
+ssh-keygen -f "/root/.ssh/known_hosts" -R "10._._.1"
+
+
+Add Windows Route
+
+route add 10.0.0.0 mask 255.0.0.0 10.m.1.4
+route add 200.0.0.0 mask 255.255.255.0 10.m.1.4
