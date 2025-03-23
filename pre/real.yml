@@ -1,0 +1,38 @@
+---
+- name: addloop
+  hosts: corebaba
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: Create VLAN
+      ios_command:
+        commands:
+          - conf t
+          - vlan 200
+          - name ANSIBLE-200
+          - exit
+          - vlan 201
+          - name ANSIBLE-201
+          - exit
+          - vlan 202
+          - name ANSIBLE-202
+      vars:
+        ansible_network_os: ios
+    
+    - name: Create SVI
+      ios_command:
+        commands:
+          - conf t
+          - int vlan 200
+          - ip add 10.61.200.1 255.255.255.0
+          - no shut
+          - exit
+          - int vlan 201
+          - ip add 10.61.201.1 255.255.255.0
+          - no shut
+          - exit
+          - int vlan 202
+          - ip add 10.61.202.1 255.255.255.0
+          - no shut
+      vars:
+        ansible_network_os: ios

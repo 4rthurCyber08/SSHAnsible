@@ -1,0 +1,17 @@
+---
+- name: addloop
+  hosts: 
+    - pnb-bgc
+    - pnb-alabang
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: Create Loopback
+      ios_command:
+        commands:
+          - conf t
+          - int lo 2
+          - ip add 2.2.2.2 255.255.255.255
+          - no shut
+      vars:
+        ansible_network_os: ios
